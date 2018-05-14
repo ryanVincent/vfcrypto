@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import Routes from 'routes';
-
+import SiteHeader from 'components/SiteHeader';
 import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import { injectGlobal } from 'styled-components'
+import reset from 'styled-reset'
+
+const baseStyles = () => injectGlobal`
+  ${reset}
+  /* other styles */
+`
+
+const Container = styled.div`
+  font-family: 'Roboto', sans-serif;
+`
 
 class App extends Component {
   render() {
+    baseStyles()
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+      <Container>
+        <SiteHeader />
         <Routes />
-      </div>
-    );
+      </Container>
+    )
   }
 }
 
