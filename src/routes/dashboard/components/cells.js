@@ -1,19 +1,25 @@
 import React from 'react';
-
+import numeral from 'numeral';
 export const CryptoCell = ({ value }) => (
 	<div>
-		crypto - {value}
+		{value}
 	</div>
 );
 
-export const CurrencyCell = ({ value }) => (
+export const PriceCell = ({ value }) => (
 	<div>
-		currency - {value}
+		$ {numeral(value).format('0,0.00')}
+	</div>
+);
+
+export const MarketCapCell = ({ value }) => (
+	<div>
+		$ {numeral(value).format('0,0.00')}
 	</div>
 );
 
 export const TickerCell = ({ value }) => (
 	<div>
-		ticker - {value}
+		{value}
 	</div>
 );

@@ -6,19 +6,21 @@ const TableHeader = styled.thead`
 	background-color: rgb(235,240,244);
 	border: 1px solid rgb(207,219,228);
 	color: rgb(171,175,198);
-
-	th {
-		text-transform: uppercase;
-		padding: 5px;
-	}
 `;
 
-const Cell = ({ title }) => <th>{title}</th>
+const Th = styled.th`
+	text-transform: uppercase;
+	text-align: ${props => props.align};
+	padding: 10px 24px;
+	font-size: 12px;
+`
 
-export default ({ columns = [] }) => (
+const HeaderCell = ({ columns = [] }) => (
 	<TableHeader>
 		<tr>
-			{columns.map(column => <Cell key={column} title={column.title} />)}
+			{columns.map(column => <Th key={column.title} align={column.align}>{column.title}</Th>)}
 		</tr>
 	</TableHeader>
 );
+
+export default HeaderCell;
