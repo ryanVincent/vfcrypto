@@ -7,10 +7,13 @@ const Td = styled.td`
 	text-align: ${props => props.align};
 `;
 
-const Cell = ({ component, value, align }) => {
+const Cell = ({ component, value, align, data }) => {
+
+	// TODO: remomve this
+	if (component === undefined) return <Td />
 	return (
 		<Td align={align}>
-			{React.createElement(component, { value })}
+			{React.createElement(component, { value, data })}
 		</Td>
 	);
 };
