@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Table from 'components/Table';
 import { CryptoCell, PriceCell, MarketCapCell, TickerCell } from 'routes/dashboard/components/cells';
+import { withCoins } from 'store/coin/Consumer';
 
 const CoinTable = styled(Table)`
 	width: 100%;
@@ -55,27 +56,23 @@ const currencyTableColumns = [
 ];
 
 class Dashboard extends React.Component {
-	state = {
-		coins: []
-	}
-	async componentDidMount() {
-		// TODO: refactor
-		const response = await fetch('https://api.coinmarketcap.com/v1/ticker/?limit=10');
-		const coins = await response.json();
-		this.setState(() => ({
-			coins,
-		}));
+
+	componentDidMount() {
+		this.props.getCoins();
 	}
 
 	handleRowClick = (row) => {
-		console.log(row);
 		const { history } = this.props;
 		history.push(`/coin/${row.id}`)
 	}
 
 	render() {
-		return <CoinTable columns={currencyTableColumns} data={this.state.coins} onRowClick={this.handleRowClick} />
+		return (
+			<CoinTable columns={currencyTableColumns} data={this.props.coins} onRowClick={this.handleRowClick} />
+		)
 	}
 };
 
-export default withRouter(Dashboard);
+export default withRouter(
+	withCoins(Dashboard)
+);

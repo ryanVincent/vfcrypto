@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Routes from 'routes';
-import SiteHeader from 'components/SiteHeader';
-import logo from './logo.svg';
-import styled from 'styled-components';
-import { injectGlobal } from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import reset from 'styled-reset'
+import CoinProvider from 'store/coin/Provider';
+import SiteHeader from 'components/SiteHeader';
 
 const baseStyles = () => injectGlobal`
   ${reset}
@@ -19,10 +18,12 @@ class App extends Component {
   render() {
     baseStyles()
     return (
-      <Container>
-        <SiteHeader />
-        <Routes />
-      </Container>
+      <CoinProvider>
+        <Container>
+          <SiteHeader />
+          <Routes />
+        </Container>
+      </CoinProvider>
     )
   }
 }
