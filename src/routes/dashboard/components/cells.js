@@ -64,21 +64,21 @@ export const CryptoCell = ({ value, data }) => (
 	</CryptoCellInner>
 );
 
-export const PriceCell = ({ value }) => (
+export const PriceCell = ({ data }) => (
 	<PriceCellInner>
-		<CurrencySymbol>$</CurrencySymbol> {numeral(value).format('0,0.00')}
+		<CurrencySymbol>$</CurrencySymbol> {numeral(data.quotes.USD.price).format('0,0.00')}
 	</PriceCellInner>
 );
 
-export const MarketCapCell = ({ value }) => (
+export const MarketCapCell = ({ data }) => (
 	<MarketCapCellInner>
-		<CurrencySymbol>$</CurrencySymbol> {numeral(value).format('0,0.00')}
+		<CurrencySymbol>$</CurrencySymbol> {numeral(data.quotes.USD.market_cap).format('0,0.00')}
 	</MarketCapCellInner>
 );
 
-export const TickerCell = ({ value }) => (
-	<TickerCellInner value={value}>
+export const TickerCell = ({ data }) => (
+	<TickerCellInner value={data.quotes.USD.percent_change_24h}>
 		{/* TODO: tidy this up */}
-		{Math.abs(value)} % { parseInt(value, 10) > 0 ? '↑' : '↓' }
+		{Math.abs(data.quotes.USD.percent_change_24h)} % { parseInt(data.quotes.USD.percent_change_24h, 10) > 0 ? '↑' : '↓' }
 	</TickerCellInner>
 );

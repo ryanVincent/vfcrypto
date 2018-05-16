@@ -68,7 +68,7 @@ class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<CoinTable columns={currencyTableColumns} data={this.props.coins} onRowClick={this.handleRowClick} />
+			<CoinTable columns={currencyTableColumns} data={Object.values(this.props.coins)} onRowClick={this.handleRowClick} />
 		)
 	}
 };
