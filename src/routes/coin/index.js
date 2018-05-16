@@ -70,7 +70,6 @@ const Container = styled.div`
 	color: rgb(94,103,109);
 `
 
-
 class Coin extends React.Component {
 	componentWillMount() {
 		const { coins, getCoin, match} = this.props;

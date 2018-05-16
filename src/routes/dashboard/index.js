@@ -58,7 +58,13 @@ const currencyTableColumns = [
 class Dashboard extends React.Component {
 
 	componentDidMount() {
-		this.props.getCoins();
+		const pollInterval = 1000 * 6; // 60 seconds
+		this.props.getCoins()
+		this.interval = window.setInterval(this.props.getCoins, pollInterval)
+	}
+
+	componentWillUnmount() {
+		window.clearInterval(this.interval)
 	}
 
 	handleRowClick = (row) => {
@@ -67,8 +73,10 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
+		const coins = Object.values(this.props.coins).sort((a, b) => a.rank < b.rank ? -1 : 1)
+
 		return (
-			<CoinTable columns={currencyTableColumns} data={Object.values(this.props.coins)} onRowClick={this.handleRowClick} />
+			<CoinTable columns={currencyTableColumns} data={coins} onRowClick={this.handleRowClick} />
 		)
 	}
 };

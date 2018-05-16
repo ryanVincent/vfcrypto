@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from 'routes';
 import styled, { injectGlobal } from 'styled-components'
 import reset from 'styled-reset'
@@ -25,10 +26,12 @@ class App extends Component {
     baseStyles()
     return (
       <CoinProvider>
-        <Container>
-          <SiteHeader />
-          <Routes />
-        </Container>
+        <Router>
+          <Container>
+            <SiteHeader />
+            <Routes />
+          </Container>
+        </Router>
       </CoinProvider>
     )
   }

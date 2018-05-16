@@ -1,6 +1,7 @@
 import React from 'react';
 import numeral from 'numeral';
-import styled from 'styled-components';
+import styled from 'styled-components'
+import CoinIcon from 'components/CoinIcon'
 
 const CryptoCellInner = styled.div`
 	display: flex;
@@ -13,11 +14,6 @@ const Rank = styled.span`
 	margin-right: 24px;
 	font-size: 12px;
 	font-weight: bold;
-`
-
-const Icon = styled.img`
-	margin-right: 12px;
-	width: 25px;
 `
 
 const Title = styled.span`
@@ -56,8 +52,7 @@ export const CryptoCell = ({ value, data }) => (
 		<Rank>
 			{data.rank}
 		</Rank>
-		{/* TODO: fix this */}
-		<Icon src={`http://cryptoicons.co/svg/color/${data.symbol.toLowerCase()}.svg`} alt="Bitcoin" />
+		<CoinIcon symbol={data.symbol} />
 		<Title>
 			{value}
 		</Title>
