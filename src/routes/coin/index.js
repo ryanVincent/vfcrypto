@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import numeral from 'numeral';
 import { withCoins } from 'store/coin/Consumer';
 
+import Label from 'routes/coin/components/Label'
+import SummaryCell from 'routes/coin/components/SummaryCell';
+
 const Currency = styled.span`
 	color: rgb(95,114,140);
 	margin-right: 5px;
@@ -30,11 +33,6 @@ const Rank = styled.div`
 	justify-content: center;
 `
 
-const Label = styled.div`
-	color: rgb(95,114,140);
-	font-size: 12px;
-	text-transform: uppercase;
-`
 
 const Row = styled.div`
 	display: flex;
@@ -42,13 +40,7 @@ const Row = styled.div`
 	align-items: center;
 `
 
-const Cell = styled.div`
-	flex: 1;
 
-	${Label} {
-		margin-bottom: 15px;
-	}
-`
 
 const LeftColumn = styled.div`
 	flex-grow: 1;
@@ -78,13 +70,6 @@ const Container = styled.div`
 	color: rgb(94,103,109);
 `
 
-const SummaryItem = styled.div`
-	color: white;
-	align-items: center;
-	display: flex;
-	font-size: 20px
-`;
-
 
 class Coin extends React.Component {
 	componentWillMount() {
@@ -113,38 +98,20 @@ class Coin extends React.Component {
 					</LeftColumn>
 					<RightColumn>
 					<Row>
-						<Cell>
-							<Label>
-								market cap
-							</Label>
-							<SummaryItem><Currency>$</Currency> {numeral(coin.quotes.USD.market_cap).format('0,0.00')}</SummaryItem>
-						</Cell>
-						<Cell>
-							<Label>
-								24h volume
-							</Label>
-							<SummaryItem><Currency>$</Currency> {numeral(coin.quotes.USD.volume_24h).format('0,0.00')}</SummaryItem>
-						</Cell>
+						<SummaryCell label="market cap">
+							<Currency>$</Currency> {numeral(coin.quotes.USD.market_cap).format('0,0.00')}
+						</SummaryCell>
+						<SummaryCell label="m24h volume">
+							<Currency>$</Currency> {numeral(coin.quotes.USD.volume_24h).format('0,0.00')}
+						</SummaryCell>
 					</Row>
 					<Row>
-						<Cell>
-							<Label>
-								circulating supply
-							</Label>
-							<SummaryItem>
-								{numeral(coin.circulating_supply).format('0,0.00')}
-								<CoinSymbol>{coin.symbol}</CoinSymbol>
-							</SummaryItem>
-						</Cell>
-						<Cell>
-							<Label>
-								total supply
-							</Label>
-							<SummaryItem>
-								{numeral(coin.total_supply).format('0,0.00')}
-								<CoinSymbol>{coin.symbol}</CoinSymbol>
-							</SummaryItem>
-						</Cell>
+						<SummaryCell label="circulating supply">
+							{numeral(coin.circulating_supply).format('0,0.00')} <CoinSymbol>{coin.symbol}</CoinSymbol>
+						</SummaryCell>
+						<SummaryCell label="total supply">
+							{numeral(coin.total_supply).format('0,0.00')} <CoinSymbol>{coin.symbol}</CoinSymbol>
+						</SummaryCell>
 					</Row>
 					</RightColumn>
 				</Container>
