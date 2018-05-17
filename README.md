@@ -22,7 +22,7 @@ I spent a little longer than the recommended time on this test for the following
 I've neglected to do a few things that I'd do under professional circumstances
 
 * I've omitted the Currency selection feature for now as I didn't have a mapping from currency type to symbol/pre(suf)fix location
-* I used a color picker to grab colors from pngs provided, and generally hard coded lots of theme variables. Normally, I'd seek confirmation from UI/UX or reach for a defined theme before styling. 
+* I used a color picker to grab colors from pngs provided, guessed the font, and generally hard coded lots of theme variables. Normally, I'd seek confirmation from UI/UX or reach for a defined theme before styling. 
 * I've not added Redux (Context API is not a suitable replacement!)
 * I've not used selectors or any kind of property getters
-* I've not hosted the svgs and am relying on a third party.
+* I've not hosted the icons and am relying on a third party.
