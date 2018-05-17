@@ -3,13 +3,17 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Table from 'components/Table';
-import { CryptoCell, PriceCell, MarketCapCell, TickerCell } from 'routes/dashboard/components/cells';
 import currencyTableColumns from 'routes/dashboard/columns';
 
 import { withCoins } from 'store/coin/Consumer';
 
 const CoinTable = styled(Table)`
 	width: 100%;
+
+	tr:hover {
+		cursor: pointer;
+		background-color: #fcfcfc;
+	}
 `;
 
 const LastUpdated = styled.div`
@@ -22,11 +26,12 @@ const LastUpdated = styled.div`
 class Dashboard extends React.Component {
 
 	componentDidMount() {
-		const pollInterval = 1000 * 60; // 60 seconds
+		const pollInterval = 1000 * 60 // 60 seconds
+
 		this.props.getCoins()
 		this.interval = window.setInterval(() => {
 			this.props.getCoins()
-		}, pollInterval);
+		}, pollInterval)
 	}
 
 	componentWillUnmount() {

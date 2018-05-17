@@ -1,5 +1,6 @@
 import { CryptoCell, PriceCell, MarketCapCell, TickerCell } from 'routes/dashboard/components/cells';
 
+// TODO: use styles rather than empty columns for layout
 export default [
 	{},
 	{},
@@ -24,13 +25,7 @@ export default [
 		component: TickerCell,
 		align: 'right',
 	},
-	{
-		path: [],
-	},
-	{
-		path: [],
-	},
-	{
-		path: [],
-	},
+	{},
+	{},
+	{},
 ];
