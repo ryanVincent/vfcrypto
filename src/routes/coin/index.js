@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import numeral from 'numeral'
 import { withCoins } from 'store/coin/Consumer'
 
 import Label from 'routes/coin/components/Label'
 import SummaryCell from 'routes/coin/components/SummaryCell'
+import { currency } from 'utilities/formatters';
 
 const Currency = styled.span`
 	color: rgb(95,114,140);
@@ -99,18 +99,18 @@ class Coin extends React.Component {
 					<RightColumn>
 					<Row>
 						<SummaryCell label="market cap">
-							<Currency>$</Currency> {numeral(coin.quotes.USD.market_cap).format('0,0.00')}
+							<Currency>$</Currency> {currency(coin.quotes.USD.market_cap)}
 						</SummaryCell>
 						<SummaryCell label="m24h volume">
-							<Currency>$</Currency> {numeral(coin.quotes.USD.volume_24h).format('0,0.00')}
+							<Currency>$</Currency> {currency(coin.quotes.USD.volume_24h)}
 						</SummaryCell>
 					</Row>
 					<Row>
 						<SummaryCell label="circulating supply">
-							{numeral(coin.circulating_supply).format('0,0.00')} <CoinSymbol>{coin.symbol}</CoinSymbol>
+							{currency(coin.circulating_supply)} <CoinSymbol>{coin.symbol}</CoinSymbol>
 						</SummaryCell>
 						<SummaryCell label="total supply">
-							{numeral(coin.total_supply).format('0,0.00')} <CoinSymbol>{coin.symbol}</CoinSymbol>
+							{currency(coin.total_supply)} <CoinSymbol>{coin.symbol}</CoinSymbol>
 						</SummaryCell>
 					</Row>
 					</RightColumn>

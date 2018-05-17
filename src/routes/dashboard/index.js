@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import Table from 'components/Table';
 import { CryptoCell, PriceCell, MarketCapCell, TickerCell } from 'routes/dashboard/components/cells';
+import currencyTableColumns from 'routes/dashboard/columns';
+
 import { withCoins } from 'store/coin/Consumer';
 
 const CoinTable = styled(Table)`
@@ -16,51 +18,6 @@ const LastUpdated = styled.div`
 	text-align: center;
 	margin-top: 20px;
 `;
-// TODO: move this out & fix empty column mechanism
-const currencyTableColumns = [
-	{
-		path: [],
-	},
-	{
-		path: [],
-	},
-	{
-		path: [],
-	},
-	{
-		title: 'cryptocurrency',
-		component: CryptoCell,
-		path: ['name'],
-		align: 'left',
-	},
-	{
-		title: 'price',
-		component: PriceCell,
-		path: ['price_usd'],
-		align: 'left',
-	},
-	{
-		title: 'market cap',
-		component: MarketCapCell,
-		path: ['market_cap_usd'],
-		align: 'left',
-	},
-	{
-		title: '24h change',
-		component: TickerCell,
-		path: ['percent_change_24h'],
-		align: 'right',
-	},
-	{
-		path: [],
-	},
-	{
-		path: [],
-	},
-	{
-		path: [],
-	},
-];
 
 class Dashboard extends React.Component {
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import numeral from 'numeral'
 
 import { withCoins } from 'store/coin/Consumer'
 import CoinIcon from 'components/CoinIcon'
+import { currency } from 'utilities/formatters';
 
 const StyledLink = styled(Link)`
 	background-color: rgb(231,242,252);
@@ -65,7 +65,7 @@ const CoinHeader = ({ coins, match }) => {
 				</Symbol>
 			</Title>
 			<Price>
-				$ {numeral(coin.quotes.USD.price).format('0,0.00')}
+				$ {currency(coin.quotes.USD.price)}
 			</Price>
 		</Header>
 	)

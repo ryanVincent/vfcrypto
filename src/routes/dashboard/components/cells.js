@@ -1,8 +1,7 @@
 import React from 'react';
-import numeral from 'numeral';
 import styled from 'styled-components'
 import CoinIcon from 'components/CoinIcon'
-
+import { currency } from 'utilities/formatters';
 const CryptoCellInner = styled.div`
 	display: flex;
 	align-items: center;
@@ -47,27 +46,27 @@ const CurrencySymbol = styled.span`
 	margin-right: 5px;
 `;
 
-export const CryptoCell = ({ value, data }) => (
+export const CryptoCell = ({ data }) => (
 	<CryptoCellInner>
 		<Rank>
 			{data.rank}
 		</Rank>
 		<CoinIcon symbol={data.symbol} />
 		<Title>
-			{value}
+			{data.name}
 		</Title>
 	</CryptoCellInner>
 );
 
 export const PriceCell = ({ data }) => (
 	<PriceCellInner>
-		<CurrencySymbol>$</CurrencySymbol> {numeral(data.quotes.USD.price).format('0,0.00')}
+		<CurrencySymbol>$</CurrencySymbol> {currency(data.quotes.USD.price)}
 	</PriceCellInner>
 );
 
 export const MarketCapCell = ({ data }) => (
 	<MarketCapCellInner>
-		<CurrencySymbol>$</CurrencySymbol> {numeral(data.quotes.USD.market_cap).format('0,0.00')}
+		<CurrencySymbol>$</CurrencySymbol> {currency(data.quotes.USD.market_cap)}
 	</MarketCapCellInner>
 );
 
