@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import numeral from 'numeral';
-import { withCoins } from 'store/coin/Consumer';
+import React from 'react'
+import styled from 'styled-components'
+import numeral from 'numeral'
+import { withCoins } from 'store/coin/Consumer'
 
 import Label from 'routes/coin/components/Label'
-import SummaryCell from 'routes/coin/components/SummaryCell';
+import SummaryCell from 'routes/coin/components/SummaryCell'
 
 const Currency = styled.span`
 	color: rgb(95,114,140);
@@ -80,10 +80,11 @@ class Coin extends React.Component {
 	}
 
 	render() {
-		const { coins, match } = this.props;
+		const { coins, match } = this.props
+		const coin = coins[match.params.id]
 
-		const coin = coins[match.params.id];
 		if (!coin) return <div></div>
+
 		return (
 			<CoinSummary>
 				<Container>
@@ -115,8 +116,8 @@ class Coin extends React.Component {
 					</RightColumn>
 				</Container>
 			</CoinSummary>
-		);
+		)
 	}
 }
 
-export default withCoins(Coin);
+export default withCoins(Coin)

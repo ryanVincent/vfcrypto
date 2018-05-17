@@ -1,5 +1,5 @@
-import React from 'react';
-import { CoinContext } from "./Provider";
+import React from 'react'
+import { CoinContext } from "./Provider"
 
 export const withCoins =  (WrappedComponent) => (props) => (
 	<CoinContext.Consumer>
