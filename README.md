@@ -26,3 +26,4 @@ I've neglected to do a few things that I'd do under professional circumstances
 * I've not added Redux (Context API is not a suitable replacement!)
 * I've not used selectors or any kind of property getters
 * I've not hosted the icons and am relying on a third party.
+* no test coverage
