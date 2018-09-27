@@ -10,6 +10,9 @@ To run locally, clone this repo and run the following:
 npm i
 npm start
 ```
+# Known Issues
+
+- Since code test urls for images have changed so Icons no longer work
 
 # Notes
 
